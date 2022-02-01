@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="pl">
+      XML Schema do pliku ssaki.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="Ssaki" type="ssaki_typ" />
+  <xsd:complexType name="ssaki_typ"> 
+    <xsd:sequence>
+      <xsd:element name="ssak" type="ssak_typ" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ssak_typ">
+    <xsd:sequence>
+      <xsd:element name="nazwa" type="xsd:string"/>
+      <xsd:element name="dlugosc_zycia" type="dlugosc_zycia_typ"/>
+      <xsd:element name="wysokosc" type="plec_wysokosc_typ"/>
+      <xsd:element name="wystepowanie" type="wystepowanie_typ"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="dlugosc_zycia_typ">
+    <xsd:sequence>
+      <xsd:element name="wolnosc" type="plec_zycie_typ" />
+      <xsd:element name="niewola" type="plec_zycie_typ" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="plec_zycie_typ">
+    <xsd:sequence>
+      <xsd:element name="samiec" type="xsd:integer" />
+      <xsd:element name="samica" type="xsd:integer" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="plec_wysokosc_typ">
+    <xsd:sequence>
+      <xsd:element name="samiec" type="xsd:string" />
+      <xsd:element name="samica" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="wystepowanie_typ">
+    <xsd:sequence>
+      <xsd:element name="kontynent" type="kontynent_typ" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="kontynent_typ">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Azja"/>
+      <xsd:enumeration value="Afryka"/>
+      <xsd:enumeration value="Europa"/>
+      <xsd:enumeration value="Ameryka Północna"/>
+      <xsd:enumeration value="Ameryka Południowa"/>
+      <xsd:enumeration value="Australia i Oceania"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
